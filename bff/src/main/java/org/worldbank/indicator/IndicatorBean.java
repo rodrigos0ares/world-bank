@@ -25,13 +25,13 @@ public class IndicatorBean {
         String result = response.readEntity(String.class);
         JSONArray objects = new JSONArray(result);
 
-        String o = objects.getJSONObject(0).toString();
-        String o2 = objects.getJSONArray(1).toString();
+        //@TODO o item 0 pussui o valores para paginacao
+        String jsonArray = objects.getJSONArray(1).toString();
         List<Indicator> indicators = Collections.emptyList();
 
         try {
             ObjectMapper mapper = new ObjectMapper();
-            indicators = mapper.readValue(o2, new TypeReference<>() {});
+            indicators = mapper.readValue(jsonArray, new TypeReference<>() {});
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }

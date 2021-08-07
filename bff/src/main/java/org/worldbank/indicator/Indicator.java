@@ -6,9 +6,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Indicator {
 
-    @JsonProperty("iso2Code")
+    @JsonProperty("countryiso3code")
     private String code;
-    private String name;
+    private Integer date;
+    private Double value;
 
     public String getCode() {
         return code;
@@ -18,11 +19,19 @@ public class Indicator {
         this.code = code;
     }
 
-    public String getName() {
-        return name;
+    public Integer getDate() {
+        return date;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDate(Integer date) {
+        this.date = date;
+    }
+
+    public Double getValue() {
+        return value;
+    }
+
+    public void setValue(Double value) {
+        this.value = value;
     }
 }

@@ -16,7 +16,7 @@ public class IndicatorResourceTest {
         given()
                 .when().get("/indicators/CN")
                 .then()
-                .statusCode(204)
+                .statusCode(200)
                 .body("size()", is(greaterThanOrEqualTo(1)));
     }
 
