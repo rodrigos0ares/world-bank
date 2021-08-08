@@ -7,7 +7,7 @@
 #
 # Then, build the image with:
 #
-# docker build -f src/main/docker/Dockerfile.jvm -t quarkus/quartz-jvm .
+# docker build -f src/main/docker/Dockerfile -t quarkus/quartz-jvm .
 #
 # Then run the container using:
 #

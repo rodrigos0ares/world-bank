@@ -12,7 +12,7 @@ public class IndicatorResourceTest {
 
     @Test
     public void list() throws InterruptedException {
-        Thread.sleep(1000); // wait at least a second to have the first task created
+        Thread.sleep(1000);
         given()
                 .when().get("/indicators/CN")
                 .then()

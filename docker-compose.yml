@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  frontend:
+    container_name: worldbank/frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "4200:80"
+    networks:
+      - worldbank-network      
+    depends_on:
+      - "bff"    
+  bff:
+    image: worldbank/bff
+    build:
+      context: ./bff
+      dockerfile: src/main/docker/Dockerfile
+    ports:
+      - "8080:8080"      
+    networks:
+      - worldbank-network        
+networks:
+  worldbank-network:
+    driver: bridge
