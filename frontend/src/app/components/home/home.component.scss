@@ -1,0 +1,27 @@
+.grid-container {
+  height: calc(100vh - 64px);
+}
+
+.box-home {
+  width: 150px;
+  height: 150px;
+  background: #fff;
+  box-shadow: none;
+  border: 1px solid #dadce0;
+  padding: 10px;
+  border-radius: 8px;
+  padding: 40px;
+  align-content: center;
+  text-align: center;
+  margin: auto;
+}
+
+.mat-card{
+  cursor: pointer
+}
+
+.mat-card>:first-child {
+  width: 108px;
+  margin: 10px;
+}
+
