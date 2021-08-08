@@ -1,0 +1,27 @@
+<div class="grid-container">
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <h4>Indicadores para o país</h4>
+  </div>
+  <div fxLayout="column" fxLayoutAlign="center">
+    <div style="width: 500px;" fxFlex>
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z8 full-width">
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef>Ano</th>
+        <td mat-cell *matCellDef="let item">{{item.date}} </td>
+      </ng-container>
+      <ng-container matColumnDef="value">
+        <th mat-header-cell *matHeaderCellDef>Percentual</th>
+        <td mat-cell *matCellDef="let item"> {{item.value? (item.value + ' %'): 'Não informado'}} </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns; let i = index"></tr>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 50]" showFirstLastButtons></mat-paginator>
+  </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-between start" dir="rtl" >
+    <button mat-button routerLink="/" class="flat-button">
+        Voltar
+    </button>
+  </div>
+</div>

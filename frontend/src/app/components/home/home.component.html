@@ -7,7 +7,7 @@
     <mat-card-content>
         <form name="form" [formGroup]="form" novalidate>
             <div fxLayout="column" fxLayoutAlign="center">
-                <mat-form-field appearance="outline">
+                <mat-form-field appearance="outline" *ngIf="countries[0]">
                     <mat-label>Selecione o pais</mat-label>
                     <input type="text"
                     placeholder="Selecione um país"
@@ -15,9 +15,9 @@
                     matInput
                     [formControl]="form.get('countryCode')"
                     [matAutocomplete]="auto">
-                    <mat-autocomplete #auto="matAutocomplete">
-                      <mat-option *ngFor="let country of countries" [value]="country.code">
-                        {{country.name}}
+                    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                      <mat-option *ngFor="let country of filteredOptions | async" [value]="country">
+                        {{country}}
                       </mat-option>
                     </mat-autocomplete>
                     <mat-error *ngIf="form.get('countryCode').hasError('required')">
@@ -25,7 +25,7 @@
                     </mat-error>
                 </mat-form-field>
                 <div fxLayout="row" fxLayoutAlign="space-between end" dir="rtl">
-                    <button mat-raised-button color="primary" [disabled]="form.invalid" (click)="consultar()">
+                    <button mat-raised-button color="primary" [disabled]="!selectedCountry" (click)="consultar()">
                         Consultar
                     </button>
                 </div>

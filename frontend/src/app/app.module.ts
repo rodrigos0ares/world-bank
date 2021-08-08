@@ -41,22 +41,27 @@ import {MatTabsModule} from '@angular/material/tabs';
 
 import {BrowserModule} from '@angular/platform-browser';
 import {MomentDateAdapter, MAT_MOMENT_DATE_FORMATS} from '@angular/material-moment-adapter';
+import { IndicadoresComponent } from './components/indicadores/indicadores.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     HomeComponent,
+    IndicadoresComponent
   ],
   exports: [
     MatExpansionModule,
     MatCheckboxModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTableModule
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    MatSortModule,
+    MatTableModule,
     MatTabsModule,
     ReactiveFormsModule,
     AppRoutingModule,
@@ -76,9 +81,6 @@ import {MomentDateAdapter, MAT_MOMENT_DATE_FORMATS} from '@angular/material-mome
     MatGridListModule,
     MatCardModule,
     MatSnackBarModule,
-    MatTableModule,
-    MatTableModule,
-    MatSortModule,
     MatPaginatorModule,
     MatChipsModule,
     MatExpansionModule,

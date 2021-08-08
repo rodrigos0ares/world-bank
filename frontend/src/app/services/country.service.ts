@@ -3,6 +3,7 @@ import { SpinnerService } from './spinner.service';
 import {Router} from "@angular/router";
 import {SnackBarService} from "./snackbar.service";
 import { HttpClient } from '@angular/common/http';
+import { Country } from '../model/country.model';
 
 
 @Injectable({
@@ -16,20 +17,18 @@ export class CountryService {
     private snackbarService: SnackBarService
   ) { }
 
-  public getCountries(): Promise<any[]> {
+  public getCountries(): Promise<Country[]> {
     return this.wrapInSpinner(
-      this.httpClient.get('http://localhost:8080/countries').toPromise().then((response: any) =>{
-        console.log(response)
-        return response.json();
+      this.httpClient.get('http://localhost:8080/countries').toPromise().then((response: Country[]) =>{
+        return response;
       })
     );
   }
 
   public getCountryIndicators(countryCode: string): Promise<any>{
     return this.wrapInSpinner(
-      this.httpClient.get('http://localhost:8080/countries/${countryCode}/indicators').toPromise().then((response: any) =>{
-        console.log(response)
-        return response.json();
+      this.httpClient.get(`http://localhost:8080/countries/${countryCode}/indicators`).toPromise().then((response: any) =>{
+        return response;
       })
     );
   }
