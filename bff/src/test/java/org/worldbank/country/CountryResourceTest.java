@@ -12,11 +12,10 @@ public class CountryResourceTest {
 
     @Test
     public void tasks() throws InterruptedException {
-        Thread.sleep(1000); // wait at least a second to have the first task created
         given()
                 .when().get("/countries")
                 .then()
-                .statusCode(204)
+                .statusCode(200)
                 .body("size()", is(greaterThanOrEqualTo(1)));
     }
 
