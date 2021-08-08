@@ -1,4 +1,4 @@
-package org.worldbank.indicator;
+package org.worldbank.country;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
