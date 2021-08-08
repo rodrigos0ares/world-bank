@@ -2,21 +2,21 @@ version: '3'
 
 services:
   frontend:
-    container_name: worldbank/frontend
+    container_name: frontend
     build:
       context: ./frontend
       dockerfile: Dockerfile
     ports:
-      - "4200:80"
+      - "80:80"
     networks:
       - worldbank-network      
     depends_on:
       - "bff"    
   bff:
-    image: worldbank/bff
+    image: bff
     build:
       context: ./bff
-      dockerfile: src/main/docker/Dockerfile
+      dockerfile: src/main/docker/Dockerfile.${QUARKUS_MODE:-jvm}
     ports:
       - "8080:8080"      
     networks:
