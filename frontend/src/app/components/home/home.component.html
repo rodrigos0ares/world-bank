@@ -1,4 +1,36 @@
 <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="space-evenly center" class="grid-container">
   <div class="grid-item"></div>
-  
+  <mat-card>
+    <mat-card-title>
+        <h6>Consultar indicadores</h6>
+    </mat-card-title>
+    <mat-card-content>
+        <form name="form" [formGroup]="form" novalidate>
+            <div fxLayout="column" fxLayoutAlign="center">
+                <mat-form-field appearance="outline">
+                    <mat-label>Selecione o pais</mat-label>
+                    <input type="text"
+                    placeholder="Selecione um país"
+                    aria-label="País"
+                    matInput
+                    [formControl]="form.get('countryCode')"
+                    [matAutocomplete]="auto">
+                    <mat-autocomplete #auto="matAutocomplete">
+                      <mat-option *ngFor="let country of countries" [value]="country.code">
+                        {{country.name}}
+                      </mat-option>
+                    </mat-autocomplete>
+                    <mat-error *ngIf="form.get('countryCode').hasError('required')">
+                      Obrigatório.
+                    </mat-error>
+                </mat-form-field>
+                <div fxLayout="row" fxLayoutAlign="space-between end" dir="rtl">
+                    <button mat-raised-button color="primary" [disabled]="form.invalid" (click)="consultar()">
+                        Consultar
+                    </button>
+                </div>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>
 </div>
