@@ -12,6 +12,7 @@ import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @ApplicationScoped
@@ -53,7 +54,7 @@ public class CountryBean {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-
+        indicators.sort(Comparator.comparingInt(Indicator::getDate));
         return indicators;
     }
 }

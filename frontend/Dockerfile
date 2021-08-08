@@ -6,7 +6,8 @@ RUN npm install
 COPY . /app
 RUN npm run build --prod
 
-FROM nginx:1.17.6
+FROM nginx:latest
 RUN rm -rf /usr/share/nginx/html/*
 COPY --from=0 /app/dist/frontend /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
